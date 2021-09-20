@@ -6,7 +6,8 @@ module.exports = {
 
     userProfile : async (req,res,next) => {
         try {
-            const result = await userModel.find({},'email firstName lastName type' )
+            let page_no = req.params.id
+            const result = await userService.getAllUsers(page_no)
             res.send(result);
         }
         catch(err){
